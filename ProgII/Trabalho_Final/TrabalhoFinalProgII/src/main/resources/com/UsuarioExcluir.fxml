@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane prefHeight="200.0" prefWidth="290.0" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.UsuarioExcluirController">
+    <children>
+
+         <ComboBox fx:id="cbUsuarios" layoutX="72.0" layoutY="69.0" promptText="Selecione o Usuário" />
+          <Button fx:id="btnExcluir" layoutX="72.0" layoutY="117.0" onAction="#excluir" text="Excluir" />
+          <Button fx:id="btnCancelar" layoutX="157.0" layoutY="117.0" onAction="#cancelar" text="Cancelar" />
+
+         <Label layoutX="89.0" layoutY="31.0" style="-fx-font-size: 16; -fx-font-weight: bold;" text="Excluir Usuário" />
+    </children>
+</AnchorPane>

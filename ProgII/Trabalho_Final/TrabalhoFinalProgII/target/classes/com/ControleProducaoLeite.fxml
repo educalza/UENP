@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+
+<AnchorPane prefHeight="327.0" prefWidth="468.0" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.CadastrarProducaoLeiteController">
+    <children>
+        <VBox layoutX="38.0" layoutY="65.0" prefHeight="222.0" prefWidth="392.0" spacing="20.0">
+            <padding>
+                <Insets bottom="10" left="10" right="10" top="10" />
+            </padding>
+
+            <ComboBox fx:id="cbVaca" promptText="Selecione a Vaca" />
+            <DatePicker fx:id="dpData" promptText="Data" />
+            <TextField fx:id="txtProducaoLitros" promptText="Quantidade de Leite (L)" />
+
+            <HBox alignment="CENTER" spacing="20">
+                <Button fx:id="btnConfirmar" onAction="#cadastrar" text="Confirmar" />
+                <Button fx:id="btnLimpar" onAction="#limpar" text="Limpar" />
+                <Button fx:id="btnCancelar" onAction="#cancelar" text="Cancelar" />
+            </HBox>
+        </VBox>
+
+         <Label layoutX="120.0" layoutY="20.0" style="-fx-font-size: 16; -fx-font-weight: bold;" text="Controle de Produção de Leite" />
+    </children>
+</AnchorPane>

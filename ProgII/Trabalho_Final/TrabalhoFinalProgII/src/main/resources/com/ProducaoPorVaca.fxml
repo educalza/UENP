@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.ProducaoLeitePorVacaController">
+    <children>
+        <VBox layoutX="37.0" layoutY="50.0" prefHeight="44.0" prefWidth="526.0" spacing="15.0">
+            <padding>
+                <Insets bottom="10" left="10" right="10" top="10" />
+            </padding>
+
+            <HBox alignment="CENTER" prefHeight="25.0" prefWidth="497.0" spacing="20">
+            <ComboBox fx:id="cbBrinco" promptText="Selecione o brinco" />
+                <ComboBox fx:id="cbMes" promptText="Selecione o Mês" /> <!-- fx:id igual ao do controlador -->
+                <DatePicker fx:id="dpDia" promptText="Filtrar por Dia" />
+            </HBox>
+        </VBox>
+
+            <TableView fx:id="tabelaVacas" layoutX="60.0" layoutY="106.0" prefHeight="200.0" prefWidth="480.0">
+             <columns>
+                 <TableColumn fx:id="colBrinco" prefWidth="100.0" text="Brinco" />
+                 <TableColumn fx:id="colNome" prefWidth="150.0" text="Nome" />
+                 <TableColumn fx:id="colData" prefWidth="100.0" text="Data" />
+                 <TableColumn fx:id="colProducao" prefWidth="130.0" text="Produção (L)" />
+             </columns>
+         </TableView>
+
+         <HBox alignment="CENTER" layoutX="234.0" layoutY="314.0" spacing="20">
+             <Button fx:id="btnBuscar" onAction="#buscar" text="Buscar" />
+             <Button fx:id="btnCancelar" onAction="#cancelar" text="Cancelar" />
+         </HBox>
+
+        <Label layoutX="132.0" layoutY="14.0" style="-fx-font-size: 16; -fx-font-weight: bold;" text="Produção Total de Leite da Fazenda por Vaca" />
+    </children>
+</AnchorPane>
