@@ -13,11 +13,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Códigos vscodes\\UENP\\Compiladores\\WebApplication1\\WebApplication1.csproj",
-      "projectName": "WebApplication1",
-      "projectPath": "C:\\Códigos vscodes\\UENP\\Compiladores\\WebApplication1\\WebApplication1.csproj",
+      "projectUniqueName": "C:\\Códigos vscodes\\UENP\\Compiladores\\MeuProjeto\\MeuProjeto.csproj",
+      "projectName": "MeuProjeto",
+      "projectPath": "C:\\Códigos vscodes\\UENP\\Compiladores\\MeuProjeto\\MeuProjeto.csproj",
       "packagesPath": "C:\\Users\\eduar\\.nuget\\packages\\",
-      "outputPath": "C:\\Códigos vscodes\\UENP\\Compiladores\\WebApplication1\\obj\\",
+      "outputPath": "C:\\Códigos vscodes\\UENP\\Compiladores\\MeuProjeto\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\eduar\\AppData\\Roaming\\NuGet\\NuGet.Config"
@@ -61,9 +61,6 @@
         "assetTargetFallback": true,
         "warn": true,
         "frameworkReferences": {
-          "Microsoft.AspNetCore.App": {
-            "privateAssets": "none"
-          },
           "Microsoft.NETCore.App": {
             "privateAssets": "all"
           }

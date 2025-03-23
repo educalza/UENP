@@ -70,16 +70,6 @@ Para obter suporte completo ao C# no VS Code, instale a extensão oficial da Mic
 
 ---
 
-## ⚙️ Configuração Extra: Habilitar o OmniSharp
-
-Caso enfrente problemas com IntelliSense ou depuração, ative o **OmniSharp**:
-
-1. No VS Code, pressione `Ctrl + Shift + P` e procure por **OmniSharp: Select Project**.
-2. Selecione o arquivo `.csproj` do seu projeto.
-3. Reinicie o VS Code se necessário.
-
----
-
 ## ✅ Conclusão
 Agora você tem um ambiente configurado para desenvolver em C# no VS Code! 🚀
 
