@@ -70,9 +70,94 @@ Para obter suporte completo ao C# no VS Code, instale a extensão oficial da Mic
 
 ---
 
-## ✅ Conclusão
+## ✅ Conclusão para instalação
 Agora você tem um ambiente configurado para desenvolver em C# no VS Code! 🚀
 
 Caso tenha dúvidas, consulte a documentação oficial do .NET:  
 👉 [Documentação do .NET](https://learn.microsoft.com/en-us/dotnet/)
+
+
+
+
+
+---
+
+
+
+
+
+# 🚀 Curiosidades sobre C#
+
+## 🔄 1. Operadores `??` e `??=` (Coalescência Nula)
+
+Em C#, os operadores `??` e `??=` são usados para lidar com valores `null` de maneira eficiente.
+
+### 📌 Operador `??` (Definir Valor Padrão se for `null`)
+Se uma variável for `null`, o operador `??` permite atribuir um valor alternativo.
+
+```csharp
+string nome = null;
+string mensagem = nome ?? "Visitante";
+Console.WriteLine(mensagem); // Saída: Visitante
+```
+
+### 📌 Operador `??=` (Atribuir Valor Apenas se for `null`)
+Se a variável for `null`, o operador `??=` permite atribuir um valor diretamente.
+
+```csharp
+string? nome = null;
+nome ??= "Visitante";
+Console.WriteLine(nome); // Saída: Visitante
+```
+
+Essa funcionalidade evita a necessidade de verificações manuais com `if` para valores `null`, tornando o código mais limpo e seguro.
+
+---
+
+## ⚡ 2. `var` Não é Dinâmico em C#
+
+Diferente de linguagens como JavaScript, onde `var` pode mudar de tipo, no C# o tipo da variável é **definido na compilação** e **não pode mudar**.
+
+### 📌 Exemplo:
+```csharp
+var numero = 10; // O compilador infere que é um int
+numero = "Agora sou string"; // ❌ ERRO! Incompatibilidade de tipos
+```
+
+Se você realmente quiser uma variável que possa mudar de tipo em tempo de execução, use `dynamic`:
+
+```csharp
+dynamic valor = 10;
+valor = "Agora sou string"; // ✅ Funciona, mas pode causar erros em runtime
+```
+
+O `var` ajuda a escrever código mais limpo sem perder a segurança de tipos estáticos.
+
+---
+
+## 🔥 3. C# Tem um "Modo Seguro" (`unsafe`)
+
+Embora C# seja uma linguagem de alto nível e segura, ele permite manipulação de ponteiros e acesso direto à memória através do **modo `unsafe`**.
+
+### 📌 Exemplo de Código `unsafe` (Não recomendado para iniciantes!):
+```csharp
+unsafe
+{
+    int numero = 42;
+    int* ponteiro = &numero;
+    Console.WriteLine(*ponteiro); // Saída: 42
+}
+```
+
+### 🚨 Para usar código `unsafe`:
+- O projeto deve estar configurado para permitir código inseguro.
+- É necessário usar a palavra-chave `unsafe`.
+- Normalmente, é necessário compilar com a flag `-unsafe` ou ativar no arquivo `.csproj`.
+
+O modo `unsafe` é útil para interoperação com código nativo e otimizações de desempenho, mas deve ser usado com cautela, pois pode causar falhas de segurança e erros difíceis de depurar.
+
+---
+
+## 🎯 Conclusão
+Essas são algumas das características interessantes do C# que podem tornar o código mais eficiente, seguro e poderoso. O uso adequado dessas funcionalidades pode melhorar significativamente a qualidade do desenvolvimento em C#!
 
