@@ -154,10 +154,90 @@ unsafe
 - É necessário usar a palavra-chave `unsafe`.
 - Normalmente, é necessário compilar com a flag `-unsafe` ou ativar no arquivo `.csproj`.
 
+```csharp
+<PropertyGroup>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+</PropertyGroup>
+```
+
 O modo `unsafe` é útil para interoperação com código nativo e otimizações de desempenho, mas deve ser usado com cautela, pois pode causar falhas de segurança e erros difíceis de depurar.
 
 ---
 
 ## 🎯 Conclusão
 Essas são algumas das características interessantes do C# que podem tornar o código mais eficiente, seguro e poderoso. O uso adequado dessas funcionalidades pode melhorar significativamente a qualidade do desenvolvimento em C#!
+
+---
+
+# 🔧 Interação com Ferramentas e Gerenciadores de Pacotes no C#
+
+---
+
+## 🛠 Compilação e Execução de Código C# no Terminal
+O .NET SDK permite compilar e executar programas diretamente no terminal. A seguir, veremos como compilar um programa em C# utilizando `dotnet` e `csc`.
+
+### 🚀 Criando um Novo Projeto
+Antes de compilar o código, precisamos criar um novo projeto:
+
+```sh
+dotnet new console -n ExemploUnsafe
+cd ExemploUnsafe
+```
+Isso cria um projeto básico chamado **ExemploUnsafe** com um arquivo `Program.cs`.
+
+### 🔨 Compilando e Executando o Programa
+Para compilar o programa, usamos o comando:
+
+```sh
+dotnet build
+```
+Isso gera o executável dentro da pasta `bin/Debug/netX.X/`. Para rodá-lo:
+
+```sh
+dotnet run
+```
+
+Se quisermos compilar manualmente sem o `dotnet build`, podemos chamar o compilador `csc` (C# Compiler):
+
+```sh
+csc -unsafe Program.cs
+./Program.exe
+```
+
+---
+
+## 📦 Gerenciador de Pacotes NuGet
+O **NuGet** é o gerenciador de pacotes oficial do .NET. Para instalar bibliotecas externas, usamos o comando `dotnet add package`.
+
+### 📥 Instalando Pacotes com NuGet
+Para instalar um pacote, utilizamos o seguinte comando:
+
+```sh
+dotnet add package Newtonsoft.Json
+```
+Isso adiciona automaticamente a dependência no arquivo `.csproj`.
+
+### 📝 Utilizando a Biblioteca `Newtonsoft.Json`
+Dentro do código C#, podemos importar e usar a biblioteca:
+
+```csharp
+using Newtonsoft.Json;
+
+class Program
+{
+    static void Main()
+    {
+        var objeto = new { Nome = "João", Idade = 25 };
+        string json = JsonConvert.SerializeObject(objeto);
+        Console.WriteLine(json); // Saída: {"Nome":"João","Idade":25}
+    }
+}
+```
+
+---
+
+## 🎯 Conclusão
+Com isso, aprendemos a **criar, compilar, executar e gerenciar dependências** em um projeto C# utilizando o **.NET SDK** e o **NuGet**. Agora você pode expandir seu projeto com novas funcionalidades e pacotes! 🚀🔥
+
+---
 
