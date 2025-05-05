@@ -75,3 +75,5 @@ dart run bin/main.dart
 
 * Livro: *Compiladores: Princípios, Técnicas e Ferramentas*, 2ª edição — Aho, Lam, Sethi, Ullman
 * Capítulo 2: Introdução à construção de interpretadores
+
+*Obs: a atividade proposta foi feita ccom auxílio de Inteligência Artificial*
