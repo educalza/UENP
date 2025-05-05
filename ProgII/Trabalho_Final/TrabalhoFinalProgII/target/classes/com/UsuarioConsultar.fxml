@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+
+<AnchorPane prefHeight="350.0" prefWidth="500.0" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.UsuarioListar">
+   <children>
+      <VBox layoutX="60.0" layoutY="45.0" prefHeight="290.0" prefWidth="380.0" spacing="15.0">
+         <padding>
+            <Insets bottom="10" left="10" right="10" top="10" />
+         </padding>
+         <children>
+            <HBox alignment="CENTER_LEFT" spacing="10" />
+            <TableView fx:id="tabelaUsuarios" prefHeight="200.0" prefWidth="448.0">
+               <columns>
+                   <TableColumn fx:id="colLogin" prefWidth="200.0" text="Login" />
+                   <TableColumn fx:id="colNome" prefWidth="200.0" text="Nome" />
+                   <TableColumn fx:id="colSenha" prefWidth="200.0" text="Senha" />
+               </columns>
+            </TableView>
+            <Button fx:id="btnCancelar" alignment="CENTER" onAction="#cancelar" text="Cancelar" />
+         </children>
+      </VBox>
+      <Label layoutX="183.0" layoutY="20.0" style="-fx-font-size: 16; -fx-font-weight: bold;" text="Consultar Usuário" />
+   </children>
+</AnchorPane>

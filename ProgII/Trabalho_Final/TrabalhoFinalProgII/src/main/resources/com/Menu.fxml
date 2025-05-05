@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.SplitMenuButton?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="500.0" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.MenuControle">
+   <children>
+      <!-- Menu de Usuários -->
+      <SplitMenuButton fx:id="menuUsuarios" layoutX="64.0" layoutY="188.0" mnemonicParsing="false" text="Usuários">
+         <items>
+            <MenuItem mnemonicParsing="false" text="Listar" />
+            <MenuItem mnemonicParsing="false" text="Alterar" />
+            <MenuItem mnemonicParsing="false" text="Excluir" />
+         </items>
+      </SplitMenuButton>
+
+      <!-- Menu de Vacas -->
+      <SplitMenuButton fx:id="menuVacas" layoutX="215.0" layoutY="188.0" mnemonicParsing="false" text="Vacas">
+         <items>
+            <MenuItem mnemonicParsing="false" text="Cadastrar" />
+            <MenuItem mnemonicParsing="false" text="Listar" />
+            <MenuItem mnemonicParsing="false" text="Alterar" />
+            <MenuItem mnemonicParsing="false" text="Excluir" />
+         </items>
+      </SplitMenuButton>
+
+      <!-- Menu de Produção -->
+      <SplitMenuButton fx:id="menuProducao" layoutX="351.0" layoutY="188.0" mnemonicParsing="false" text="Produção">
+         <items>
+            <MenuItem mnemonicParsing="false" text="Cadastrar produção" />
+            <MenuItem mnemonicParsing="false" text="Exibir produção por vaca" />
+            <MenuItem mnemonicParsing="false" text="Exibir produção total da fazenda" />
+         </items>
+      </SplitMenuButton>
+
+      <!-- Título -->
+      <Label layoutX="150.0" layoutY="42.0" text="Fazendinha">
+         <font>
+            <Font size="40.0" />
+         </font>
+      </Label>
+
+      <!-- Botão de Sair -->
+      <Button fx:id="btnSair" layoutX="218.0" layoutY="296.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="65.0" text="Sair" />
+   </children>
+</AnchorPane>
