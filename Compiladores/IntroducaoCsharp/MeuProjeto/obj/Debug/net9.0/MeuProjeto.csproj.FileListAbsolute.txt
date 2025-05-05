@@ -1,0 +1,15 @@
+C:\Códigos vscodes\UENP\Compiladores\MeuProjeto\bin\Debug\net9.0\MeuProjeto.exe
+C:\Códigos vscodes\UENP\Compiladores\MeuProjeto\bin\Debug\net9.0\MeuProjeto.deps.json
+C:\Códigos vscodes\UENP\Compiladores\MeuProjeto\bin\Debug\net9.0\MeuProjeto.runtimeconfig.json
+C:\Códigos vscodes\UENP\Compiladores\MeuProjeto\bin\Debug\net9.0\MeuProjeto.dll
+C:\Códigos vscodes\UENP\Compiladores\MeuProjeto\bin\Debug\net9.0\MeuProjeto.pdb
+C:\Códigos vscodes\UENP\Compiladores\MeuProjeto\obj\Debug\net9.0\MeuProjeto.GeneratedMSBuildEditorConfig.editorconfig
+C:\Códigos vscodes\UENP\Compiladores\MeuProjeto\obj\Debug\net9.0\MeuProjeto.AssemblyInfoInputs.cache
+C:\Códigos vscodes\UENP\Compiladores\MeuProjeto\obj\Debug\net9.0\MeuProjeto.AssemblyInfo.cs
+C:\Códigos vscodes\UENP\Compiladores\MeuProjeto\obj\Debug\net9.0\MeuProjeto.csproj.CoreCompileInputs.cache
+C:\Códigos vscodes\UENP\Compiladores\MeuProjeto\obj\Debug\net9.0\MeuProjeto.sourcelink.json
+C:\Códigos vscodes\UENP\Compiladores\MeuProjeto\obj\Debug\net9.0\MeuProjeto.dll
+C:\Códigos vscodes\UENP\Compiladores\MeuProjeto\obj\Debug\net9.0\refint\MeuProjeto.dll
+C:\Códigos vscodes\UENP\Compiladores\MeuProjeto\obj\Debug\net9.0\MeuProjeto.pdb
+C:\Códigos vscodes\UENP\Compiladores\MeuProjeto\obj\Debug\net9.0\MeuProjeto.genruntimeconfig.cache
+C:\Códigos vscodes\UENP\Compiladores\MeuProjeto\obj\Debug\net9.0\ref\MeuProjeto.dll
