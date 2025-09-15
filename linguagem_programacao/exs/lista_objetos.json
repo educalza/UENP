@@ -1,0 +1,16 @@
+[
+    {
+        "codigo": "1",
+        "nome": "Caneta Azul",
+        "preco": 2.50,
+        "estoque": 300,
+        "categoria": ["Escritório", "Papelaria"]
+    },
+    {
+        "codigo": "2",
+        "nome": "Mouse Óptico",
+        "preco": 55.00,
+        "estoque": 80,
+        "categoria": ["Informática"]
+    }
+]

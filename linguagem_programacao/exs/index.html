@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Geolocalização</title>
+</head>
+<body>
+  <h1>Obter Latitude</h1>
+  <button id="botao">Mostrar Latitude</button>
+
+  <script>
+    const botao = document.getElementById("botao");
+
+    botao.addEventListener("click", () => {
+      if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(
+          (posicao) => {
+            const latitude = posicao.coords.latitude;
+            alert("Sua latitude é: " + latitude);
+          },
+          (erro) => {
+            alert("Erro ao obter localização: " + erro.message);
+          }
+        );
+      } else {
+        alert("Geolocalização não é suportada pelo seu navegador.");
+      }
+    });
+  </script>
+</body>
+</html>
