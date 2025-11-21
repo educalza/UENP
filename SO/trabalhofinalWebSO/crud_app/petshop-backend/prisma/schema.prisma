@@ -1,0 +1,49 @@
+// 1. Configuração do Cliente
+generator client {
+  provider = "prisma-client-js"
+}
+
+// 2. Configuração do Banco de Dados
+datasource db {
+  provider = "sqlite"
+  url  	= "file:./dev.db"
+}
+
+// 3. Suas Tabelas (Models)
+model Pet {
+  id  	Int  	@id @default(autoincrement())
+  nome  	String
+  raca  	String?
+  dono  	String
+  agendamentos Agendamento[]
+  
+  // --- AQUI ESTÁ A LINHA QUE FALTAVA ---
+  vacinas      Vacina[]
+}
+
+model Servico {
+  id  	Int  	@id @default(autoincrement())
+  nome  	String  	@unique
+  preco  	Float
+  agendamentos Agendamento[]
+}
+
+model Agendamento {
+  id  	Int  	@id @default(autoincrement())
+  dataHora  DateTime
+  status  	String  	@default("Agendado")
+  
+  petId  	Int
+  servicoId Int
+  pet  	Pet  	@relation(fields: [petId], references: [id])
+  servico  	Servico @relation(fields: [servicoId], references: [id])
+}
+
+model Vacina {
+  id  	Int  	@id @default(autoincrement())
+  nomeVacina  	String
+  dataAplicacao DateTime
+  proximaDose  	DateTime?
+  petId  	Int
+  pet  	Pet  	@relation(fields: [petId], references: [id])
+}

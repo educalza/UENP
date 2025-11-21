@@ -13,6 +13,7 @@
             justify-content: center;
             height: 100vh;
             background-color: #f0f0f0;
+            margin: 0;
         }
         h1 {
             color: #333;
@@ -21,81 +22,113 @@
             font-size: 1.2em;
             margin-top: 20px;
             color: #555;
+            text-align: center;
+        }
+        #joystick-status {
+            font-size: 1.2em; /* Reduzido para caber os novos dados */
+            font-weight: bold;
+            color: #007bff;
+            margin-top: 10px;
+            height: 50px; 
+            white-space: pre; /* Mantém a formatação do texto */
+        }
+        
+        #joystick-container {
+            width: 150px;
+            height: 150px;
+            background-color: #dcdcdc;
+            border-radius: 50%;
+            position: relative;
+            border: 2px solid #b0b0b0;
+            margin-top: 20px;
+        }
+
+        #joystick-handle {
+            width: 50px;
+            height: 50px;
+            background-color: #666;
+            border-radius: 50%;
+            position: absolute;
+            top: 50px;
+            left: 50px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.3);
         }
     </style>
 </head>
 <body>
-    <h1>Controle do Carrinho</h1>
-    <div class="status">Conecte seu controle de PS4 e pressione qualquer botão para ativá-lo.</div>
+    <h1>Controle Proporcional do Carrinho</h1>
+
+    <div id="joystick-container">
+        <div id="joystick-handle"></div>
+    </div>
+    
+    <div class="status">Conecte seu controle e pressione qualquer botão para ativá-lo.</div>
+    <div id="joystick-status">Aguardando dados...</div>
 
     <script>
         const ws = new WebSocket('ws://' + window.location.host);
-        
-        ws.onopen = () => {
-            console.log('Conectado ao servidor WebSocket!');
-        };
-        
-        ws.onerror = error => {
-            console.error('Erro no WebSocket:', error);
-        };
 
-        let lastCommand = '';
+        ws.onopen = () => console.log('Conectado ao servidor WebSocket!');
+        ws.onerror = error => console.error('Erro no WebSocket:', error);
+
         let gamepadIndex;
+        let gameLoopInterval; // NOVO: Usaremos um intervalo para enviar dados
+
+        const joystickStatusDiv = document.getElementById('joystick-status');
+        const joystickHandle = document.getElementById('joystick-handle');
+        const joystickContainer = document.getElementById('joystick-container');
+        const handleCenter = (joystickContainer.offsetWidth - joystickHandle.offsetWidth) / 2;
 
         window.addEventListener('gamepadconnected', (event) => {
             gamepadIndex = event.gamepad.index;
-            console.log('Gamepad conectado no índice %d: %s', gamepadIndex, event.gamepad.id);
-            document.querySelector('.status').innerText = 'Controle conectado! Use os analógicos ou o D-pad para controlar o carrinho.';
-            gameLoop();
+            console.log('Gamepad conectado: %s', event.gamepad.id);
+            document.querySelector('.status').innerText = 'Controle conectado! Controle fluido ativado.';
+            
+            // NOVO: Inicia o envio de dados a cada 50ms
+            if (gameLoopInterval) clearInterval(gameLoopInterval);
+            gameLoopInterval = setInterval(gameLoop, 50); 
         });
 
         window.addEventListener('gamepaddisconnected', () => {
             console.log('Gamepad desconectado.');
             document.querySelector('.status').innerText = 'Controle desconectado. Por favor, reconecte-o.';
+            joystickStatusDiv.innerText = 'Aguardando dados...';
+            
+            // NOVO: Para o envio de dados
+            clearInterval(gameLoopInterval);
+            
+            joystickHandle.style.top = handleCenter + 'px';
+            joystickHandle.style.left = handleCenter + 'px';
         });
 
-        // Loop principal para ler o estado do gamepad
         function gameLoop() {
             if (gamepadIndex === undefined) return;
-
             const gamepad = navigator.getGamepads()[gamepadIndex];
             if (!gamepad) return;
 
-            // Mapeamento dos botões (ex: D-pad)
-            const up = gamepad.buttons[12].pressed;
-            const down = gamepad.buttons[13].pressed;
-            const left = gamepad.buttons[14].pressed;
-            const right = gamepad.buttons[15].pressed;
+            let horizontalAxis = gamepad.axes[0];
+            let verticalAxis = gamepad.axes[1];
 
-            // Mapeamento dos eixos (ex: analógico esquerdo)
-            const horizontalAxis = gamepad.axes[0];
-            const verticalAxis = gamepad.axes[1];
+            const deadzone = 0.1; // Diminuímos o deadzone para maior sensibilidade
 
-            // Tolerância para evitar 'drift'
-            const deadzone = 0.5;
-            let currentCommand = '';
+            // Aplica o deadzone
+            if (Math.abs(horizontalAxis) < deadzone) horizontalAxis = 0;
+            if (Math.abs(verticalAxis) < deadzone) verticalAxis = 0;
 
-            // Lógica para o D-pad ou analógico
-            if (up || verticalAxis < -deadzone) {
-                currentCommand = 'forward';
-            } else if (down || verticalAxis > deadzone) {
-                currentCommand = 'backward';
-            } else if (left || horizontalAxis < -deadzone) {
-                currentCommand = 'left';
-            } else if (right || horizontalAxis > deadzone) {
-                currentCommand = 'right';
-            } else {
-                currentCommand = 'stop';
-            }
+            // Move o joystick virtual
+            const maxOffset = joystickContainer.offsetWidth / 2 - joystickHandle.offsetWidth / 2;
+            joystickHandle.style.left = (handleCenter + horizontalAxis * maxOffset) + 'px';
+            joystickHandle.style.top = (handleCenter + verticalAxis * maxOffset) + 'px';
+            
+            // Exibe os dados na tela
+            joystickStatusDiv.textContent = `Eixo X: ${horizontalAxis.toFixed(2)}\nEixo Y: ${verticalAxis.toFixed(2)}`;
 
-            // Envia o comando apenas se ele mudou
-            if (currentCommand !== lastCommand) {
-                console.log('Enviando comando:', currentCommand);
-                ws.send(currentCommand);
-                lastCommand = currentCommand;
-            }
-
-            requestAnimationFrame(gameLoop);
+            // NOVO: Cria um objeto JSON e envia para o servidor WebSocket
+            const controlData = {
+                x: horizontalAxis,
+                y: verticalAxis
+            };
+            ws.send(JSON.stringify(controlData));
         }
     </script>
 </body>
