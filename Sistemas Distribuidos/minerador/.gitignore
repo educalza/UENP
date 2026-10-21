@@ -1,0 +1,11 @@
+__pycache__/
+native/*.dll
+native/*.so
+native/*.dylib
+desempenho.json
+desempenho_cuda.json
+.cuda-deps/
+native/cuda_cache/
+.cluster/
+pc-??.json
+cluster_minerador.zip

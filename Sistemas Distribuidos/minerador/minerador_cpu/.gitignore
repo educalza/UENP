@@ -1,0 +1,5 @@
+__pycache__/
+native/*.dll
+native/*.so
+native/*.dylib
+desempenho.json
